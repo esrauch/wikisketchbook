@@ -15,10 +15,8 @@
 {{/header}}
 {{#posts}}
 <div class="post">
-    <h2>{{title}}</h2>
+    <h2><a href={{{wikilink}}}>{{wiki_displaylink}}</a></h2>
     <div class="subtitle">
-        <a href={{{wikilink}}}>{{wikilink}}</a>
-        •
         <a href="/by/date/{{date}}.html">{{shortdate}}</a>
         •
         <span class="tags">
@@ -27,7 +25,9 @@
             {{/tag}}
         </span>
     </div>
-    <img src={{{img}}} width=350>
+    <div class="sketch">
+        <a href={{{img}}}><img src={{{img}}} width=350></a>
+    </div>
     <div class="desc">{{#text}}<p>{{.}}</p>{{/text}}</div>
 </div>
 {{/posts}}

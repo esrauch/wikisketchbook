@@ -16,6 +16,7 @@ const allPosts = recursiveLs('src/posts')
     .map(name => {
         const contents = fs.readFileSync(name, 'utf8')
         const parsed = yaml.parse(contents)
+        parsed.wiki_displaylink = parsed.wikilink.substring('https://'.length);
         return parsed;
     });
 allPosts.sort((a, b) => b.date.localeCompare(a.date))
