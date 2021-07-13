@@ -1,0 +1,6 @@
+{
+ "dependencies": {
+  "mustache": "^4.2.0",
+  "yaml": "1.10.2"
+ }
+}

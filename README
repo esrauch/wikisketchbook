@@ -1,0 +1,3 @@
+Personal blog, generated from yaml+mustache templates
+
+$ node gen.js
