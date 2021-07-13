@@ -24,7 +24,7 @@ const outerTemplate = fs.readFileSync('src/templates/outer.html', 'utf-8');
 const postsTemplate = fs.readFileSync('src/templates/posts.html', 'utf-8');
 
 function writePosts(posts, outDir, outFilename, opt_extraHeader) {
-    outDir = 'out/' + outDir;
+    outDir = 'docs/' + outDir;
     const postsInner = M.render(postsTemplate, {
         header: opt_extraHeader,
         posts

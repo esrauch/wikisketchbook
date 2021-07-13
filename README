@@ -1,4 +1,4 @@
 Personal blog, generated from yaml+mustache templates
 
 $ node gen.js
-cp src/img out/img
+cp -r src/img docs/img
