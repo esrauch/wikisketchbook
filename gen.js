@@ -23,19 +23,26 @@ allPosts.sort((a, b) => b.date.localeCompare(a.date))
 
 const outerTemplate = fs.readFileSync('src/templates/outer.html', 'utf-8');
 const postsTemplate = fs.readFileSync('src/templates/posts.html', 'utf-8');
+const aboutTemplate = fs.readFileSync('src/templates/about.html', 'utf-8');
+
+function renderWithOuterWrapper(innerTemplate, innerArgs) {
+    const inner = M.render(innerTemplate, innerArgs);
+    const outer = M.render(outerTemplate, {content: inner})
+    return outer;
+}
 
 function writePosts(posts, outDir, outFilename, opt_extraHeader) {
     outDir = 'docs/' + outDir;
-    const postsInner = M.render(postsTemplate, {
-        header: opt_extraHeader,
-        posts
-    })
-    const outer = M.render(outerTemplate, {content: postsInner})
+    const page = renderWithOuterWrapper(postsTemplate, {
+            header: opt_extraHeader,
+            posts
+    });
+
     fs.mkdirSync(outDir, {recursive: true}, (err) => { if (err) throw err });
 
     // TODO: Split this into multiple once there's too many posts
     // (mainly for the allposts ordered by date.
-    fs.writeFileSync(outDir + '/' + outFilename, outer);
+    fs.writeFileSync(outDir + '/' + outFilename, page);
 }
 
 writePosts(allPosts, '.', 'index.html', 'Interesting Wikipedia Articles, Sketched')
@@ -64,3 +71,6 @@ function writePostsGroupByField(posts, fieldName) {
 
 writePostsGroupByField(allPosts, 'date')
 writePostsGroupByField(allPosts, 'tag')
+
+const aboutPage = renderWithOuterWrapper(aboutTemplate);
+fs.writeFileSync('docs/about.html', aboutPage);
