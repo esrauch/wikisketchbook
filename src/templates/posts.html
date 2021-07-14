@@ -1,7 +1,10 @@
 <div class="posts">
 <style scoped>
     .post {
-            margin-bottom: 50px;
+        margin-bottom: 50px;
+    }
+    .post img {
+        height: 5in;
     }
 </style>
 {{#header}}
@@ -20,7 +23,7 @@
         </span>
     </div>
     <div class="sketch">
-        <a href={{{img}}}><img src={{{img}}} width=350></a>
+        <a href={{{img}}}><img src={{{img}}}></a>
     </div>
     <div class="desc">{{#text}}<p>{{.}}</p>{{/text}}</div>
 </div>

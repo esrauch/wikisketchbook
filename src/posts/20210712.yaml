@@ -4,4 +4,6 @@
     date: 2021-07-12
     shortdate: July 12
     text: A 17 foot tall banana-lamb hybrid statue in Liverpool
-    tag: culture
+    tag:
+        - culture
+        - banana
