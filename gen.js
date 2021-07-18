@@ -13,6 +13,7 @@ function recursiveLs(dir) {
 }
 
 const allPosts = recursiveLs('src/posts')
+    .filter(name => name.endsWith('.yaml'))
     .map(name => {
         const contents = fs.readFileSync(name, 'utf8')
         const parsed = yaml.parse(contents)
