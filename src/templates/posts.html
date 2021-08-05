@@ -16,15 +16,18 @@
         text-align: center;
     }
     .desc {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 20px;
         display: flex;
         flex-flow: column;
         justify-content: center;
         flex-grow: 1;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 20px;
     }
     .sketch {
         margin-top: 10px;
+    }
+    .subtitle {
+        font-size: 25px;
     }
 </style>
 {{#header}}
@@ -32,9 +35,11 @@
 {{/header}}
 {{#posts}}
 <div class="post">
+        <h2>{{name}}</h2>
         <div class="subtitle">
-            <h2><a href={{{wikilink}}}>{{name}}</a></h2>
-            <a href="/by/date/{{date}}.html">{{shortdate}}</a>
+            <a href={{{wikilink}}}>Wikilink</a>
+            •
+            <a href="/by/date/{{date}}.html">{{shortdate}}</a> 
             •
             <span class="tags">
                 {{#tag}}

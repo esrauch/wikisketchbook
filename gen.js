@@ -20,6 +20,7 @@ const allPosts = recursiveLs('src/posts')
         if (!parsed.wikilink.startsWith('https://wikipedia.org/wiki/'))
             throw Error('wrong prefix on wikilink')
         parsed.wiki_displaylink = parsed.wikilink.substring('https://'.length);
+        parsed.wiki_displaylink = parsed.wiki_displaylink.replace('/wiki/','/');
         if (!parsed.name) {
             parsed.name = parsed.wikilink.substring('https://wikipedia.org/wiki/'.length).replace(/_/g, ' ');
         }
