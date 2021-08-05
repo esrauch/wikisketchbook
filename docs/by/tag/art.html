@@ -6,67 +6,105 @@
         * {
             margin: 0;
             padding: 0;
-            text-transform: lowercase;
+            /*text-transform: lowercase;*/
         }
         h1 {
             margin-bottom: 25px;
         }
-        .subtitle {
-            color: #777;
+        h1,h2 {
+            font-weight: 200;
         }
         body {
             margin: 0 25px;
             padding: 0;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            /*font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
+            font-family: 'Amatic SC', cursive;
+            font-size: 30px;
+            background-color: black;
+            color: white;
         }
 
         a { color: inherit; text-decoration: none; }
         a:hover { text-decoration: underline; }
     </style>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="subtitle">
+    <div class="links">
         <a href="/">Home</a>
         <a href="/about.html">About</a>
     </div>
     <div class="posts">
 <style scoped>
+    .posts {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+    }
     .post {
-        margin-bottom: 50px;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        margin: 0 0 50px 50px;
+        width: 400px;
+        height: 550px;
+        border: 1px solid #777;
+        text-align: center;
+    }
+    .desc {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        flex-grow: 1;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 20px;
+    }
+    .sketch {
+        margin-top: 10px;
     }
 </style>
     <h1>by tag: art</h1>
 <div class="post">
-    <h2><a href=https://wikipedia.org/wiki/Moon_Museum>wikipedia.org&#x2F;wiki&#x2F;Moon_Museum</a></h2>
-    <div class="subtitle">
-        <a href="/by/date/2021-07-18.html">July 18</a>
-        •
-        <span class="tags">
-                <a href="/by/tag/space.html">#space</a>
-                <a href="/by/tag/art.html">#art</a>
-        </span>
-    </div>
-    <div class="sketch">
-        <a href=/img/20210718_moon_museum.jpg><img src=/img/20210718_moon_museum.jpg width=450></a>
-    </div>
-    <div class="desc"><p>A small ceramic wafer with six works of art</p><p>Covertly sent to the moon</p></div>
+        <div class="subtitle">
+            <h2><a href=https://wikipedia.org/wiki/Moon_Museum>Moon Museum</a></h2>
+            <a href="/by/date/2021-07-18.html">July 18</a>
+            •
+            <span class="tags">
+                    <a href="/by/tag/space.html">#space</a>
+                    <a href="/by/tag/art.html">#art</a>
+            </span>
+        </div>
+        <div class="sketch">
+            <a href="/img/20210718_moon_museum.jpg"><img src="/img/20210718_moon_museum.jpg" width=400 height=264/></a>
+        </div>
+        <div class="desc">
+            <div>
+                <p>A small ceramic wafer</p><p>Six works of art</p><p>Secretly left on the moon.</p><p>Andy Warhol drew a penis.</p>
+            </div>
+        </div>
 </div>
 <div class="post">
-    <h2><a href=https://wikipedia.org/wiki/Superlambanana>wikipedia.org&#x2F;wiki&#x2F;Superlambanana</a></h2>
-    <div class="subtitle">
-        <a href="/by/date/2021-07-12.html">July 12</a>
-        •
-        <span class="tags">
-                <a href="/by/tag/art.html">#art</a>
-                <a href="/by/tag/banana.html">#banana</a>
-        </span>
-    </div>
-    <div class="sketch">
-        <a href=/img/20210712-superlambanana.jpg><img src=/img/20210712-superlambanana.jpg width=450></a>
-    </div>
-    <div class="desc"><p>A 17 foot tall banana-lamb hybrid statue in Liverpool</p></div>
+        <div class="subtitle">
+            <h2><a href=https://wikipedia.org/wiki/Superlambanana>Superlambanana</a></h2>
+            <a href="/by/date/2021-07-12.html">July 12</a>
+            •
+            <span class="tags">
+                    <a href="/by/tag/art.html">#art</a>
+                    <a href="/by/tag/banana.html">#banana</a>
+            </span>
+        </div>
+        <div class="sketch">
+            <a href="/img/20210712-superlambanana.jpg"><img src="/img/20210712-superlambanana.jpg" width=400 height=264/></a>
+        </div>
+        <div class="desc">
+            <div>
+                <p>17 foot tall banana-lamb hybrid</p><p></p><p>Liverpool&#39;s main exports:</p><p>1. Lambs</p><p>2. Bananas</p>
+            </div>
+        </div>
 </div>
 </div>
 </body>

@@ -1,10 +1,12 @@
 ---
-    wikilink:  https://wikipedia.org/wiki/German_chocolate_cake
+    name: German Cake
+    wikilink:  https://wikipedia.org/wiki/German_Chocolate_Cake
     img: /img/20210719_german_chocolate_cake.jpg
     date: 2021-07-19
     shortdate: July 19
     text:
-        - German Chocolate Cake isn't from Germany
-        - It is named after the baker Samuel German
+        - German Chocolate Cake
+        - is not from Germany.
+        - Named after Mr. German.
     tag:
         - origins

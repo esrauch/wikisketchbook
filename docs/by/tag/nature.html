@@ -6,51 +6,85 @@
         * {
             margin: 0;
             padding: 0;
-            text-transform: lowercase;
+            /*text-transform: lowercase;*/
         }
         h1 {
             margin-bottom: 25px;
         }
-        .subtitle {
-            color: #777;
+        h1,h2 {
+            font-weight: 200;
         }
         body {
             margin: 0 25px;
             padding: 0;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            /*font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
+            font-family: 'Amatic SC', cursive;
+            font-size: 30px;
+            background-color: black;
+            color: white;
         }
 
         a { color: inherit; text-decoration: none; }
         a:hover { text-decoration: underline; }
     </style>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="subtitle">
+    <div class="links">
         <a href="/">Home</a>
         <a href="/about.html">About</a>
     </div>
     <div class="posts">
 <style scoped>
+    .posts {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+    }
     .post {
-        margin-bottom: 50px;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        margin: 0 0 50px 50px;
+        width: 400px;
+        height: 550px;
+        border: 1px solid #777;
+        text-align: center;
+    }
+    .desc {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        flex-grow: 1;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 20px;
+    }
+    .sketch {
+        margin-top: 10px;
     }
 </style>
     <h1>by tag: nature</h1>
 <div class="post">
-    <h2><a href=https://wikipedia.org/wiki/Pistol_shrimp>wikipedia.org&#x2F;wiki&#x2F;Pistol_shrimp</a></h2>
-    <div class="subtitle">
-        <a href="/by/date/2021-07-11.html">July 11</a>
-        •
-        <span class="tags">
-                <a href="/by/tag/nature.html">#nature</a>
-        </span>
-    </div>
-    <div class="sketch">
-        <a href=/img/20210711-pistol_shrimp.jpg><img src=/img/20210711-pistol_shrimp.jpg width=450></a>
-    </div>
-    <div class="desc"><p>Pistol Shrimp shoot bubbles from their claws at 60mph to kill fish</p><p>The bubbles are a loud enough that they interfere with anti-submarine warfare</p></div>
+        <div class="subtitle">
+            <h2><a href=https://wikipedia.org/wiki/Pistol_Shrimp>Pistol Shrimp</a></h2>
+            <a href="/by/date/2021-07-11.html">July 11</a>
+            •
+            <span class="tags">
+                    <a href="/by/tag/nature.html">#nature</a>
+            </span>
+        </div>
+        <div class="sketch">
+            <a href="/img/20210711-pistol_shrimp.jpg"><img src="/img/20210711-pistol_shrimp.jpg" width=400 height=264/></a>
+        </div>
+        <div class="desc">
+            <div>
+                <p>They shoot bubbles at 60mph</p><p>The bubbles are so loud that they</p><p>interfere with anti-submarine warfare</p>
+            </div>
+        </div>
 </div>
 </div>
 </body>

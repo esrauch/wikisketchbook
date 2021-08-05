@@ -6,50 +6,64 @@
         * {
             margin: 0;
             padding: 0;
-            text-transform: lowercase;
+            /*text-transform: lowercase;*/
         }
         h1 {
             margin-bottom: 25px;
         }
-        .subtitle {
-            color: #777;
+        h1,h2 {
+            font-weight: 200;
         }
         body {
             margin: 0 25px;
             padding: 0;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            /*font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
+            font-family: 'Amatic SC', cursive;
+            font-size: 25px;
+            background-color: black;
+            color: white;
         }
 
         a { color: inherit; text-decoration: none; }
         a:hover { text-decoration: underline; }
     </style>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="subtitle">
+    <div class="links">
         <a href="/">Home</a>
         <a href="/about.html">About</a>
     </div>
     <div class="posts">
 <style scoped>
     .post {
-        margin-bottom: 50px;
+        display: inline-block;
+        margin: 0 0 50px 50px;
+        width: 300px;
+        height: 450px;
+        border: 1px solid #777;
+    }
+    .posts .subtitle {
+        border-bottom: 1px solid #777;
     }
 </style>
     <h1>by tag: undefined</h1>
 <div class="post">
-    <h2><a href=https://wikipedia.org/wiki/Florence_Y'all_Water_Tower>wikipedia.org&#x2F;wiki&#x2F;Florence_Y&#39;all_Water_Tower</a></h2>
     <div class="subtitle">
+        <h2><a href=https://wikipedia.org/wiki/Florence_Y'all_Water_Tower>Y&#39;all Tower</a></h2>
         <a href="/by/date/2021-07-16.html">July 16</a>
         •
         <span class="tags">
         </span>
     </div>
-    <div class="sketch">
-        <a href=/img/20210716_florence_yall.jpg><img src=/img/20210716_florence_yall.jpg width=450></a>
+    <a href="/img/20210716_florence_yall.jpg"><img src="/img/20210716_florence_yall.jpg" width=300 height=200/></a>
+    <div class="desc">
+        <p>&quot;Florence Mall&quot; water tower</p><p>Forced to change ...</p><p>Easy fix: change Mall to a Y&#39;all</p>
     </div>
-    <div class="desc"><p>&quot;Florence Mall&quot; water tower had to change.</p><p>Easy fix: change Mall to a Y&#39;all</p></div>
 </div>
 </div>
 </body>

@@ -17,10 +17,27 @@ const allPosts = recursiveLs('src/posts')
     .map(name => {
         const contents = fs.readFileSync(name, 'utf8')
         const parsed = yaml.parse(contents)
+        if (!parsed.wikilink.startsWith('https://wikipedia.org/wiki/'))
+            throw Error('wrong prefix on wikilink')
         parsed.wiki_displaylink = parsed.wikilink.substring('https://'.length);
+        if (!parsed.name) {
+            parsed.name = parsed.wikilink.substring('https://wikipedia.org/wiki/'.length).replace(/_/g, ' ');
+        }
         return parsed;
     });
 allPosts.sort((a, b) => b.date.localeCompare(a.date))
+
+/*
+const svgTemplate = fs.readFileSync('src/templates/post2.svg', 'utf-8');
+function writePostsSvgs(post) {
+    const image_b64 = fs.readFileSync('src' + post.img).toString('base64');
+    const svg = M.render(svgTemplate, {...post, image_b64});
+    const svg_path = '/svgs/' + post.date + '.svg';
+    post.svg_path = svg_path;
+    fs.writeFileSync('./docs' + svg_path, svg);
+}
+allPosts.forEach(writePostsSvgs);
+*/
 
 const outerTemplate = fs.readFileSync('src/templates/outer.html', 'utf-8');
 const postsTemplate = fs.readFileSync('src/templates/posts.html', 'utf-8');

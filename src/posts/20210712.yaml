@@ -3,7 +3,12 @@
     img: /img/20210712-superlambanana.jpg
     date: 2021-07-12
     shortdate: July 12
-    text: A 17 foot tall banana-lamb hybrid statue in Liverpool
+    text:
+        - 17 foot tall banana-lamb hybrid
+        -
+        - "Liverpool's main exports:"
+        - 1. Lambs
+        - 2. Bananas
     tag:
         - art
         - banana

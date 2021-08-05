@@ -1,11 +1,14 @@
 ---
-    wikilink:  https://wikipedia.org/wiki/1000000000000066600000000000001
+    wikilink:  https://wikipedia.org/wiki/Belphegor's_Prime
     img: /img/20210717_belphegors_prime.jpg
     date: 2021-07-17
     shortdate: July 17
     text:
-        - "[1, 13 zeroes, 666, 13 zeroes, 1] is a prime number"
-        - Represented by upside-down Pi, named after the demon Belphegor.
+        - "10000000000000"
+        - "666"
+        - "00000000000001"
+        - is a prime number.
+        - Named after evil Belphegor.
     tag:
         - math
         - myth

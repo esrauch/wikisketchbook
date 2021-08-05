@@ -6,179 +6,250 @@
         * {
             margin: 0;
             padding: 0;
-            text-transform: lowercase;
+            /*text-transform: lowercase;*/
         }
         h1 {
             margin-bottom: 25px;
         }
-        .subtitle {
-            color: #777;
+        h1,h2 {
+            font-weight: 200;
         }
         body {
             margin: 0 25px;
             padding: 0;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            /*font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
+            font-family: 'Amatic SC', cursive;
+            font-size: 30px;
+            background-color: black;
+            color: white;
         }
 
         a { color: inherit; text-decoration: none; }
         a:hover { text-decoration: underline; }
     </style>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div class="subtitle">
+    <div class="links">
         <a href="/">Home</a>
         <a href="/about.html">About</a>
     </div>
     <div class="posts">
 <style scoped>
+    .posts {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+    }
     .post {
-        margin-bottom: 50px;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        margin: 0 0 50px 50px;
+        width: 400px;
+        height: 550px;
+        border: 1px solid #777;
+        text-align: center;
+    }
+    .desc {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        flex-grow: 1;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 20px;
+    }
+    .sketch {
+        margin-top: 10px;
     }
 </style>
     <h1>Interesting Wikipedia Articles, Sketched</h1>
 <div class="post">
-    <h2><a href=https://wikipedia.org/wiki/German_chocolate_cake>wikipedia.org&#x2F;wiki&#x2F;German_chocolate_cake</a></h2>
-    <div class="subtitle">
-        <a href="/by/date/2021-07-19.html">July 19</a>
-        •
-        <span class="tags">
-                <a href="/by/tag/origins.html">#origins</a>
-        </span>
-    </div>
-    <div class="sketch">
-        <a href=/img/20210719_german_chocolate_cake.jpg><img src=/img/20210719_german_chocolate_cake.jpg width=450></a>
-    </div>
-    <div class="desc"><p>German Chocolate Cake isn&#39;t from Germany</p><p>It is named after the baker Samuel German</p></div>
+        <div class="subtitle">
+            <h2><a href=https://wikipedia.org/wiki/German_Chocolate_Cake>German Cake</a></h2>
+            <a href="/by/date/2021-07-19.html">July 19</a>
+            •
+            <span class="tags">
+                    <a href="/by/tag/origins.html">#origins</a>
+            </span>
+        </div>
+        <div class="sketch">
+            <a href="/img/20210719_german_chocolate_cake.jpg"><img src="/img/20210719_german_chocolate_cake.jpg" width=400 height=264/></a>
+        </div>
+        <div class="desc">
+            <div>
+                <p>German Chocolate Cake</p><p>is not from Germany.</p><p>Named after Mr. German.</p>
+            </div>
+        </div>
 </div>
 <div class="post">
-    <h2><a href=https://wikipedia.org/wiki/Moon_Museum>wikipedia.org&#x2F;wiki&#x2F;Moon_Museum</a></h2>
-    <div class="subtitle">
-        <a href="/by/date/2021-07-18.html">July 18</a>
-        •
-        <span class="tags">
-                <a href="/by/tag/space.html">#space</a>
-                <a href="/by/tag/art.html">#art</a>
-        </span>
-    </div>
-    <div class="sketch">
-        <a href=/img/20210718_moon_museum.jpg><img src=/img/20210718_moon_museum.jpg width=450></a>
-    </div>
-    <div class="desc"><p>A small ceramic wafer with six works of art</p><p>Covertly sent to the moon</p></div>
+        <div class="subtitle">
+            <h2><a href=https://wikipedia.org/wiki/Moon_Museum>Moon Museum</a></h2>
+            <a href="/by/date/2021-07-18.html">July 18</a>
+            •
+            <span class="tags">
+                    <a href="/by/tag/space.html">#space</a>
+                    <a href="/by/tag/art.html">#art</a>
+            </span>
+        </div>
+        <div class="sketch">
+            <a href="/img/20210718_moon_museum.jpg"><img src="/img/20210718_moon_museum.jpg" width=400 height=264/></a>
+        </div>
+        <div class="desc">
+            <div>
+                <p>A small ceramic wafer</p><p>Six works of art</p><p>Secretly left on the moon.</p><p>Andy Warhol drew a penis.</p>
+            </div>
+        </div>
 </div>
 <div class="post">
-    <h2><a href=https://wikipedia.org/wiki/1000000000000066600000000000001>wikipedia.org&#x2F;wiki&#x2F;1000000000000066600000000000001</a></h2>
-    <div class="subtitle">
-        <a href="/by/date/2021-07-17.html">July 17</a>
-        •
-        <span class="tags">
-                <a href="/by/tag/math.html">#math</a>
-                <a href="/by/tag/myth.html">#myth</a>
-        </span>
-    </div>
-    <div class="sketch">
-        <a href=/img/20210717_belphegors_prime.jpg><img src=/img/20210717_belphegors_prime.jpg width=450></a>
-    </div>
-    <div class="desc"><p>[1, 13 zeroes, 666, 13 zeroes, 1] is a prime number</p><p>Represented by upside-down Pi, named after the demon Belphegor.</p></div>
+        <div class="subtitle">
+            <h2><a href=https://wikipedia.org/wiki/Belphegor's_Prime>Belphegor&#39;s Prime</a></h2>
+            <a href="/by/date/2021-07-17.html">July 17</a>
+            •
+            <span class="tags">
+                    <a href="/by/tag/math.html">#math</a>
+                    <a href="/by/tag/myth.html">#myth</a>
+            </span>
+        </div>
+        <div class="sketch">
+            <a href="/img/20210717_belphegors_prime.jpg"><img src="/img/20210717_belphegors_prime.jpg" width=400 height=264/></a>
+        </div>
+        <div class="desc">
+            <div>
+                <p>10000000000000</p><p>666</p><p>00000000000001</p><p>is a prime number.</p><p>Named after evil Belphegor.</p>
+            </div>
+        </div>
 </div>
 <div class="post">
-    <h2><a href=https://wikipedia.org/wiki/Florence_Y'all_Water_Tower>wikipedia.org&#x2F;wiki&#x2F;Florence_Y&#39;all_Water_Tower</a></h2>
-    <div class="subtitle">
-        <a href="/by/date/2021-07-16.html">July 16</a>
-        •
-        <span class="tags">
-        </span>
-    </div>
-    <div class="sketch">
-        <a href=/img/20210716_florence_yall.jpg><img src=/img/20210716_florence_yall.jpg width=450></a>
-    </div>
-    <div class="desc"><p>&quot;Florence Mall&quot; water tower had to change.</p><p>Easy fix: change Mall to a Y&#39;all</p></div>
+        <div class="subtitle">
+            <h2><a href=https://wikipedia.org/wiki/Florence_Y'all_Water_Tower>Y&#39;all Tower</a></h2>
+            <a href="/by/date/2021-07-16.html">July 16</a>
+            •
+            <span class="tags">
+                    <a href="/by/tag/misc.html">#misc</a>
+            </span>
+        </div>
+        <div class="sketch">
+            <a href="/img/20210716_florence_yall.jpg"><img src="/img/20210716_florence_yall.jpg" width=400 height=264/></a>
+        </div>
+        <div class="desc">
+            <div>
+                <p>&quot;Florence Mall&quot; water tower</p><p>Forced to change ...</p><p>Easy fix:</p><p>change Mall to a Y&#39;all</p>
+            </div>
+        </div>
 </div>
 <div class="post">
-    <h2><a href=https://wikipedia.org/wiki/Bananadine>wikipedia.org&#x2F;wiki&#x2F;Bananadine</a></h2>
-    <div class="subtitle">
-        <a href="/by/date/2021-07-15.html">July 15</a>
-        •
-        <span class="tags">
-                <a href="/by/tag/banana.html">#banana</a>
-        </span>
-    </div>
-    <div class="sketch">
-        <a href=/img/20210715_bananadine.jpg><img src=/img/20210715_bananadine.jpg width=450></a>
-    </div>
-    <div class="desc"><p>A fictional psychoactive substance in bananas</p><p>Could be real, only one way to find out...</p></div>
+        <div class="subtitle">
+            <h2><a href=https://wikipedia.org/wiki/Bananadine>Bananadine</a></h2>
+            <a href="/by/date/2021-07-15.html">July 15</a>
+            •
+            <span class="tags">
+                    <a href="/by/tag/banana.html">#banana</a>
+            </span>
+        </div>
+        <div class="sketch">
+            <a href="/img/20210715_bananadine.jpg"><img src="/img/20210715_bananadine.jpg" width=400 height=264/></a>
+        </div>
+        <div class="desc">
+            <div>
+                <p>A fictional psychoactive substance</p><p>Could it be real?</p><p>Only one way to find out...</p>
+            </div>
+        </div>
 </div>
 <div class="post">
-    <h2><a href=https://wikipedia.org/wiki/Fallen_Astronaut>wikipedia.org&#x2F;wiki&#x2F;Fallen_Astronaut</a></h2>
-    <div class="subtitle">
-        <a href="/by/date/2021-07-14.html">July 14</a>
-        •
-        <span class="tags">
-                <a href="/by/tag/space.html">#space</a>
-        </span>
-    </div>
-    <div class="sketch">
-        <a href=/img/20210714_fallen_astronaut.jpg><img src=/img/20210714_fallen_astronaut.jpg width=450></a>
-    </div>
-    <div class="desc"><p>A 3.5-inch stylized sculpture of an astronaut</p><p>Secretly placed on the moon by the crew of Apollo 15 in 1971</p><p>Memorializing 8 astronauts and 6 cosmonauts who had died</p></div>
+        <div class="subtitle">
+            <h2><a href=https://wikipedia.org/wiki/Fallen_Astronaut>Fallen Astronaut</a></h2>
+            <a href="/by/date/2021-07-14.html">July 14</a>
+            •
+            <span class="tags">
+                    <a href="/by/tag/space.html">#space</a>
+            </span>
+        </div>
+        <div class="sketch">
+            <a href="/img/20210714_fallen_astronaut.jpg"><img src="/img/20210714_fallen_astronaut.jpg" width=400 height=264/></a>
+        </div>
+        <div class="desc">
+            <div>
+                <p>3.5-inch sculpture</p><p>Secretly placed on the moon</p><p>By Apollo 15 crew in 1971</p>
+            </div>
+        </div>
 </div>
 <div class="post">
-    <h2><a href=https://wikipedia.org/wiki/Spherical_cow>wikipedia.org&#x2F;wiki&#x2F;Spherical_cow</a></h2>
-    <div class="subtitle">
-        <a href="/by/date/2021-07-13.html">July 13</a>
-        •
-        <span class="tags">
-                <a href="/by/tag/science.html">#science</a>
-        </span>
-    </div>
-    <div class="sketch">
-        <a href=/img/20210713_sphericalcow.jpg><img src=/img/20210713_sphericalcow.jpg width=450></a>
-    </div>
-    <div class="desc"><p>Physicists go too far in their cow simplification</p></div>
+        <div class="subtitle">
+            <h2><a href=https://wikipedia.org/wiki/Spherical_cow>Spherical cow</a></h2>
+            <a href="/by/date/2021-07-13.html">July 13</a>
+            •
+            <span class="tags">
+                    <a href="/by/tag/science.html">#science</a>
+            </span>
+        </div>
+        <div class="sketch">
+            <a href="/img/20210713_sphericalcow.jpg"><img src="/img/20210713_sphericalcow.jpg" width=400 height=264/></a>
+        </div>
+        <div class="desc">
+            <div>
+                <p>Physicists</p><p>oversimplify</p><p>cows.</p>
+            </div>
+        </div>
 </div>
 <div class="post">
-    <h2><a href=https://wikipedia.org/wiki/Superlambanana>wikipedia.org&#x2F;wiki&#x2F;Superlambanana</a></h2>
-    <div class="subtitle">
-        <a href="/by/date/2021-07-12.html">July 12</a>
-        •
-        <span class="tags">
-                <a href="/by/tag/art.html">#art</a>
-                <a href="/by/tag/banana.html">#banana</a>
-        </span>
-    </div>
-    <div class="sketch">
-        <a href=/img/20210712-superlambanana.jpg><img src=/img/20210712-superlambanana.jpg width=450></a>
-    </div>
-    <div class="desc"><p>A 17 foot tall banana-lamb hybrid statue in Liverpool</p></div>
+        <div class="subtitle">
+            <h2><a href=https://wikipedia.org/wiki/Superlambanana>Superlambanana</a></h2>
+            <a href="/by/date/2021-07-12.html">July 12</a>
+            •
+            <span class="tags">
+                    <a href="/by/tag/art.html">#art</a>
+                    <a href="/by/tag/banana.html">#banana</a>
+            </span>
+        </div>
+        <div class="sketch">
+            <a href="/img/20210712-superlambanana.jpg"><img src="/img/20210712-superlambanana.jpg" width=400 height=264/></a>
+        </div>
+        <div class="desc">
+            <div>
+                <p>17 foot tall banana-lamb hybrid</p><p></p><p>Liverpool&#39;s main exports:</p><p>1. Lambs</p><p>2. Bananas</p>
+            </div>
+        </div>
 </div>
 <div class="post">
-    <h2><a href=https://wikipedia.org/wiki/Pistol_shrimp>wikipedia.org&#x2F;wiki&#x2F;Pistol_shrimp</a></h2>
-    <div class="subtitle">
-        <a href="/by/date/2021-07-11.html">July 11</a>
-        •
-        <span class="tags">
-                <a href="/by/tag/nature.html">#nature</a>
-        </span>
-    </div>
-    <div class="sketch">
-        <a href=/img/20210711-pistol_shrimp.jpg><img src=/img/20210711-pistol_shrimp.jpg width=450></a>
-    </div>
-    <div class="desc"><p>Pistol Shrimp shoot bubbles from their claws at 60mph to kill fish</p><p>The bubbles are a loud enough that they interfere with anti-submarine warfare</p></div>
+        <div class="subtitle">
+            <h2><a href=https://wikipedia.org/wiki/Pistol_Shrimp>Pistol Shrimp</a></h2>
+            <a href="/by/date/2021-07-11.html">July 11</a>
+            •
+            <span class="tags">
+                    <a href="/by/tag/nature.html">#nature</a>
+            </span>
+        </div>
+        <div class="sketch">
+            <a href="/img/20210711-pistol_shrimp.jpg"><img src="/img/20210711-pistol_shrimp.jpg" width=400 height=264/></a>
+        </div>
+        <div class="desc">
+            <div>
+                <p>They shoot bubbles at 60mph</p><p>The bubbles are so loud that they</p><p>interfere with anti-submarine warfare</p>
+            </div>
+        </div>
 </div>
 <div class="post">
-    <h2><a href=https://wikipedia.org/wiki/El_Tío>wikipedia.org&#x2F;wiki&#x2F;El_Tío</a></h2>
-    <div class="subtitle">
-        <a href="/by/date/2021-07-10.html">July 10</a>
-        •
-        <span class="tags">
-                <a href="/by/tag/myth.html">#myth</a>
-        </span>
-    </div>
-    <div class="sketch">
-        <a href=/img/20210710-el-tio.jpg><img src=/img/20210710-el-tio.jpg width=450></a>
-    </div>
-    <div class="desc"><p>El Tio (The Uncle) is the Mine God in Bolivia</p><p>The miners worshop Christ above ground and El Tío below ground</p><p>The Catholic Church does not approve</p></div>
+        <div class="subtitle">
+            <h2><a href=https://wikipedia.org/wiki/El_Tío>El Tío</a></h2>
+            <a href="/by/date/2021-07-10.html">July 10</a>
+            •
+            <span class="tags">
+                    <a href="/by/tag/myth.html">#myth</a>
+            </span>
+        </div>
+        <div class="sketch">
+            <a href="/img/20210710-el-tio.jpg"><img src="/img/20210710-el-tio.jpg" width=400 height=264/></a>
+        </div>
+        <div class="desc">
+            <div>
+                <p>Bolivian Miners worship El Tio</p><p>below ground, and Christ above.</p><p>The Pope doesn&#39;t approve.</p>
+            </div>
+        </div>
 </div>
 </div>
 </body>
