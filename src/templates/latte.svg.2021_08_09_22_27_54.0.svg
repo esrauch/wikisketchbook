@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="105mm"
+   height="74mm"
+   viewBox="0 0 105 74"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="latte.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.4823793"
+     inkscape:cx="205.7503"
+     inkscape:cy="154.14408"
+     inkscape:window-width="999"
+     inkscape:window-height="697"
+     inkscape:window-x="819"
+     inkscape:window-y="299"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <rect
+       x="6.7459116"
+       y="8.769685"
+       width="168.64779"
+       height="153.80678"
+       id="rect9343" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text9341"
+       style="font-size:40px;line-height:1.25;font-family:'Edwardian Script ITC';word-spacing:0px;white-space:pre;shape-inside:url(#rect9343);-inkscape-font-specification:'Edwardian Script ITC';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"><tspan
+         x="6.7460938"
+         y="196.42264"
+         id="tspan19677"><tspan
+           dx="0 31.875 31.71875 28.28125 39.121094 25.527344 31.875"
+           id="tspan19675">COSMIC
+</tspan></tspan><tspan
+         x="6.7460938"
+         y="246.42264"
+         id="tspan19681"><tspan
+           dx="0 30.351562 36.328125 23.476562 23.476562"
+           id="tspan19679">LATTE</tspan></tspan></text>
+    <rect
+       style="fill:#000000;stroke-width:0.264583"
+       id="rect19665"
+       width="109.05469"
+       height="77.64122"
+       x="-0.35697117"
+       y="-0.53545672" />
+    <ellipse
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="path59"
+       cx="45.067608"
+       cy="23.738583"
+       rx="18.651745"
+       ry="7.3179088" />
+  </g>
+</svg>

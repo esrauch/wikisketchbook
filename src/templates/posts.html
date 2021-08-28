@@ -11,7 +11,7 @@
         align-items: center;
         margin: 25px;
         width: 400px;
-        height: 550px;
+        min-height: 550px;
         border: 1px solid #777;
         text-align: center;
     }
@@ -22,6 +22,7 @@
         flex-flow: column;
         justify-content: center;
         flex-grow: 1;
+        margin: 20px 0;
     }
     .sketch {
         margin-top: 10px;
@@ -48,11 +49,18 @@
             </span>
         </div>
         <div class="sketch">
-            <a href="{{{img}}}"><img src="{{{img}}}" width=400 height=264/></a>
+            <a href="{{{img}}}">
+                <img src="{{{img}}}"
+                     width=400
+                     {{#square_img}}height=400{{/square_img}}
+                     {{^square_img}}height=264{{/square_img}}
+                     />
+            </a>
         </div>
         <div class="desc">
             <div>
                 {{#text}}<p>{{.}}</p>{{/text}}
+                {{#text_html}}<p>{{{.}}}</p>{{/text_html}}
             </div>
         </div>
 </div>

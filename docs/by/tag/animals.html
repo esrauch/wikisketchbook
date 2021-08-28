@@ -6,51 +6,126 @@
         * {
             margin: 0;
             padding: 0;
-            text-transform: lowercase;
+            /*text-transform: lowercase;*/
         }
         h1 {
             margin-bottom: 25px;
         }
-        .subtitle {
-            color: #777;
+        h1,h2 {
+            font-weight: 200;
         }
         body {
             margin: 0 25px;
             padding: 0;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            /*font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
+            font-family: 'Amatic SC', cursive;
+            font-size: 30px;
+            background-color: black;
+            color: white;
         }
 
         a { color: inherit; text-decoration: none; }
         a:hover { text-decoration: underline; }
     </style>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=2.0, user-scalable=yes", target-densitydpi=device-dpi />
 </head>
 
 <body>
-    <div class="subtitle">
+    <div class="links">
         <a href="/">Home</a>
         <a href="/about.html">About</a>
     </div>
     <div class="posts">
 <style scoped>
+    .posts {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+    }
     .post {
-        margin-bottom: 50px;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        margin: 25px;
+        width: 400px;
+        min-height: 550px;
+        border: 1px solid #777;
+        text-align: center;
+    }
+    .desc {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 20px;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        flex-grow: 1;
+        margin: 20px 0;
+    }
+    .sketch {
+        margin-top: 10px;
+    }
+    .subtitle {
+        font-size: 25px;
     }
 </style>
     <h1>by tag: animals</h1>
 <div class="post">
-    <h2><a href=https://wikipedia.org/wiki/Big_Deuce_VII>wikipedia.org&#x2F;wiki&#x2F;Big_Deuce_VII</a></h2>
-    <div class="subtitle">
-        <a href="/by/date/2021-07-19.html">July 19</a>
-        •
-        <span class="tags">
-                <a href="/by/tag/animals.html">#animals</a>
-        </span>
-    </div>
-    <div class="sketch">
-        <a href=/img/20210720_2_big_deuce.jpg><img src=/img/20210720_2_big_deuce.jpg width=450></a>
-    </div>
-    <div class="desc"><p>Big Deuce VII is an US Army mascot donkey</p></div>
+        <h2>Big Deuce VII</h2>
+        <div class="subtitle">
+            <a href=https://wikipedia.org/wiki/Big_Deuce_VII>Wikilink</a>
+            •
+            <a href="/by/date/2021-07-20.html">July 20</a> 
+            •
+            <span class="tags">
+                    <a href="/by/tag/animals.html">#animals</a>
+            </span>
+        </div>
+        <div class="sketch">
+            <a href="/img/20210720_big_deuce.jpg">
+                <img src="/img/20210720_big_deuce.jpg"
+                     width=400
+                     height=400
+                     
+                     />
+            </a>
+        </div>
+        <div class="desc">
+            <div>
+                <p>Big Deuce VII is an US Army mascot donkey</p>
+                
+            </div>
+        </div>
+</div>
+<div class="post">
+        <h2>Pistol Shrimp</h2>
+        <div class="subtitle">
+            <a href=https://wikipedia.org/wiki/Pistol_Shrimp>Wikilink</a>
+            •
+            <a href="/by/date/2021-07-11.html">July 11</a> 
+            •
+            <span class="tags">
+                    <a href="/by/tag/animals.html">#animals</a>
+            </span>
+        </div>
+        <div class="sketch">
+            <a href="/img/20210711-pistol_shrimp.jpg">
+                <img src="/img/20210711-pistol_shrimp.jpg"
+                     width=400
+                     
+                     height=264
+                     />
+            </a>
+        </div>
+        <div class="desc">
+            <div>
+                <p>They shoot bubbles at 60mph</p><p>The bubbles are so loud that they</p><p>interfere with anti-submarine warfare</p>
+                
+            </div>
+        </div>
 </div>
 </div>
 </body>
