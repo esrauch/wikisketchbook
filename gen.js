@@ -64,7 +64,7 @@ function writePosts(posts, outDir, outFilename, opt_extraHeader) {
     fs.writeFileSync(outDir + '/' + outFilename, page);
 }
 
-writePosts(allPosts, '.', 'index.html', 'Interesting Wikipedia Articles, Sketched')
+writePosts(allPosts, '.', 'index.html', 'Interesting Wikipedia Articles')
 
 function writePostsGroupByField(posts, fieldName) {
     const m = new Map();
