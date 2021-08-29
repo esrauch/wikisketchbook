@@ -2,6 +2,7 @@
     name: German Cake
     wikilink:  https://wikipedia.org/wiki/German_Chocolate_Cake
     img: /img/20210719_german_chocolate_cake.jpg
+    rectangle_img: true
     date: 2021-07-19
     shortdate: July 19
     text:
