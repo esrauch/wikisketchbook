@@ -63,8 +63,9 @@ function writePosts(posts, outDir, outFilename, opt_extraHeader) {
     // (mainly for the allposts ordered by date.
     fs.writeFileSync(outDir + '/' + outFilename, page);
 }
-
 writePosts(allPosts, '.', 'index.html', 'Interesting Wikipedia Articles')
+console.log(`${allPosts.length} posts written to index`)
+
 
 function writePostsGroupByField(posts, fieldName) {
     const m = new Map();
@@ -86,6 +87,7 @@ function writePostsGroupByField(posts, fieldName) {
             'by/' + fieldName, group + '.html',
             `by ${fieldName}: ${group}`);
     }
+    console.log(`${m.size} by ${fieldName} written`)
 }
 
 writePostsGroupByField(allPosts, 'date')
@@ -93,3 +95,5 @@ writePostsGroupByField(allPosts, 'tag')
 
 const aboutPage = renderWithOuterWrapper(aboutTemplate);
 fs.writeFileSync('docs/about.html', aboutPage);
+
+console.log('done!')
