@@ -1,5 +1,7 @@
-Personal blog, generated from yaml+mustache templates
-http://wikisketchbook.com
+Personal blog, generated from a handwritten generator
+From yaml+mustache templates
+
+Visite the site at http://wikisketchbook.com
 
 $ node gen.js
 $ cp -r src/img/* docs/img/
