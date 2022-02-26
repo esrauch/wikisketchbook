@@ -24,8 +24,11 @@
             color: white;
         }
 
+        /*
         a { color: inherit; text-decoration: none; }
         a:hover { text-decoration: underline; }
+        */
+        a { color: inherit; text-decoration: underline; }
     </style>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,10 +38,13 @@
 </head>
 
 <body>
-    <div class="links">
-        <a href="/">Home</a>
-        <a href="/about.html">About</a>
-    </div>
+        <div class="links">
+            <a href="/">Home</a>
+            <a href="/all.html">All</a>
+            <a href="/arted.html">Arted</a>
+            <a href="/artless.html">Artless</a>
+            <a href="/about.html">About</a>
+        </div>
     <div class="posts">
 <style scoped>
     .posts {
@@ -46,19 +52,21 @@
         flex-flow: column;
         align-items: center;
     }
-    .post {
+    .posts .post {
         display: flex;
         flex-flow: column;
         align-items: center;
         margin: 25px;
         width: 400px;
-        min-height: 550px;
+        /*min-height: 550px;*/
         border: 1px solid #777;
         text-align: center;
     }
-    .desc {
+    .desc, .wikilink {
         font-family: 'Courier New', Courier, monospace;
         font-size: 20px;
+    }
+    .desc {
         display: flex;
         flex-flow: column;
         justify-content: center;
@@ -71,27 +79,20 @@
     .subtitle {
         font-size: 25px;
     }
+    .posts hr {
+        color: #777;
+        width: 100%;
+        margin-bottom: 10px;
+    }
 </style>
     <h1>by tag: misc</h1>
 <div class="post">
         <h2>Bookland</h2>
-        <div class="subtitle">
-            <a href=https://wikipedia.org/wiki/Bookland>Wikilink</a>
-            •
-            <a href="/by/date/2021-08-29.html">Aug 29</a> 
-            •
-            <span class="tags">
-                    <a href="/by/tag/misc.html">#misc</a>
-            </span>
-        </div>
         <div class="sketch">
-            <a href="/img/20210829_bookland.jpg">
-                <img src="/img/20210829_bookland.jpg"
-                     width=400
-                     height=400
-                     
-                     />
-            </a>
+            <img src="/img/20210829_bookland.jpg" width=400 height=400 />
+        </div>
+        <div class="wikilink">
+            <a href=https://wikipedia.org/wiki/Bookland>Wikipedia Link</a>
         </div>
         <div class="desc">
             <div>
@@ -102,23 +103,11 @@
 </div>
 <div class="post">
         <h2>Retrofuturism</h2>
-        <div class="subtitle">
-            <a href=https://wikipedia.org/wiki/Retrofuturism>Wikilink</a>
-            •
-            <a href="/by/date/2021-08-05.html">Aug 5</a> 
-            •
-            <span class="tags">
-                    <a href="/by/tag/misc.html">#misc</a>
-            </span>
-        </div>
         <div class="sketch">
-            <a href="/img/20210805_retrofuture.jpg">
-                <img src="/img/20210805_retrofuture.jpg"
-                     width=400
-                     height=400
-                     
-                     />
-            </a>
+            <img src="/img/20210805_retrofuture.jpg" width=400 height=400 />
+        </div>
+        <div class="wikilink">
+            <a href=https://wikipedia.org/wiki/Retrofuturism>Wikipedia Link</a>
         </div>
         <div class="desc">
             <div>
@@ -129,23 +118,11 @@
 </div>
 <div class="post">
         <h2>Y&#39;all Tower</h2>
-        <div class="subtitle">
-            <a href=https://wikipedia.org/wiki/Florence_Y'all_Water_Tower>Wikilink</a>
-            •
-            <a href="/by/date/2021-07-16.html">July 16</a> 
-            •
-            <span class="tags">
-                    <a href="/by/tag/misc.html">#misc</a>
-            </span>
-        </div>
         <div class="sketch">
-            <a href="/img/20210716_florence_yall.png">
-                <img src="/img/20210716_florence_yall.png"
-                     width=400
-                     height=400
-                     
-                     />
-            </a>
+            <img src="/img/20210716_florence_yall.png" width=400 height=400 />
+        </div>
+        <div class="wikilink">
+            <a href=https://wikipedia.org/wiki/Florence_Y'all_Water_Tower>Wikipedia Link</a>
         </div>
         <div class="desc">
             <div>

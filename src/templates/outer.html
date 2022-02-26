@@ -24,8 +24,11 @@
             color: white;
         }
 
+        /*
         a { color: inherit; text-decoration: none; }
         a:hover { text-decoration: underline; }
+        */
+        a { color: inherit; text-decoration: underline; }
     </style>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,9 +38,14 @@
 </head>
 
 <body>
-    <div class="links">
-        <a href="/">Home</a>
-        <a href="/about.html">About</a>
-    </div>
+    {{^hide_header_links}}
+        <div class="links">
+            <a href="/">Home</a>
+            <a href="/all.html">All</a>
+            <a href="/arted.html">Arted</a>
+            <a href="/artless.html">Artless</a>
+            <a href="/about.html">About</a>
+        </div>
+    {{/hide_header_links}}
     {{{ content }}}
 </body>

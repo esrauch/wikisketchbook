@@ -1,6 +1,7 @@
 const yaml = require('yaml')
 const fs = require('fs')
 const M = require('mustache')
+const { parse } = require('path')
 
 function recursiveLs(dir) {
     const files = fs.readdirSync(dir).map(f => `${dir}/${f}`)
@@ -17,10 +18,12 @@ const allPosts = recursiveLs('src/posts')
     .map(name => {
         const contents = fs.readFileSync(name, 'utf8')
         const parsed = yaml.parse(contents)
-        if (!parsed.wikilink.startsWith('https://wikipedia.org/wiki/'))
-            throw Error('wrong prefix on wikilink')
-        parsed.wiki_displaylink = parsed.wikilink.substring('https://'.length);
-        parsed.wiki_displaylink = parsed.wiki_displaylink.replace('/wiki/','/');
+        if (parsed.wikilink) {
+            if (!parsed.wikilink.startsWith('https://wikipedia.org/wiki/'))
+                throw Error('wrong prefix on wikilink for file ' + name);
+            parsed.wiki_displaylink = parsed.wikilink.substring('https://'.length);
+            parsed.wiki_displaylink = parsed.wiki_displaylink.replace('/wiki/', '/');
+        }
         if (!parsed.name) {
             parsed.name = parsed.wikilink.substring('https://wikipedia.org/wiki/'.length).replace(/_/g, ' ');
         }
@@ -44,26 +47,38 @@ const outerTemplate = fs.readFileSync('src/templates/outer.html', 'utf-8');
 const postsTemplate = fs.readFileSync('src/templates/posts.html', 'utf-8');
 const aboutTemplate = fs.readFileSync('src/templates/about.html', 'utf-8');
 
-function renderWithOuterWrapper(innerTemplate, innerArgs) {
-    const inner = M.render(innerTemplate, innerArgs);
-    const outer = M.render(outerTemplate, {content: inner})
+function renderWithOuterWrapper(innerTemplate, args) {
+    const inner = M.render(innerTemplate, args);
+    const outer = M.render(outerTemplate, { ...args, content: inner })
     return outer;
 }
 
-function writePosts(posts, outDir, outFilename, opt_extraHeader) {
+function writePosts(posts, outDir, outFilename, opts) {
+    opts = opts || {};
+
     outDir = 'docs/' + outDir;
     const page = renderWithOuterWrapper(postsTemplate, {
-            header: opt_extraHeader,
-            posts
+        header: opts['header'],
+        hide_header_links: opts['hideHeaderLinks'],
+        posts
     });
 
-    fs.mkdirSync(outDir, {recursive: true}, (err) => { if (err) throw err });
+    fs.mkdirSync(outDir, { recursive: true }, (err) => { if (err) throw err });
 
     // TODO: Split this into multiple once there's too many posts
     // (mainly for the allposts ordered by date.
     fs.writeFileSync(outDir + '/' + outFilename, page);
 }
-writePosts(allPosts, '.', 'index.html', 'Interesting Wikipedia Articles')
+
+const landing = allPosts.filter(post => post.not_article)
+const articles = allPosts.filter(post => !post.not_article)
+const arted = articles.filter(post => !!post.img);
+const artless = articles.filter(post => !post.img);
+
+writePosts(landing, '.', 'index.html', {hideHeaderLinks: true})
+writePosts(articles, '.', 'all.html', {header: 'Curious Wiki Pages'})
+writePosts(arted, '.', 'arted.html', {header: 'Art inspired by Articles'})
+writePosts(artless, '.', 'artless.html', {header: 'Interesting Not-yet-arted Articles'})
 console.log(`${allPosts.length} posts written to index`)
 
 
@@ -85,7 +100,7 @@ function writePostsGroupByField(posts, fieldName) {
         writePosts(
             posts,
             'by/' + fieldName, group + '.html',
-            `by ${fieldName}: ${group}`);
+            {header: `by ${fieldName}: ${group}`});
     }
     console.log(`${m.size} by ${fieldName} written`)
 }

@@ -5,19 +5,21 @@
         flex-flow: column;
         align-items: center;
     }
-    .post {
+    .posts .post {
         display: flex;
         flex-flow: column;
         align-items: center;
         margin: 25px;
         width: 400px;
-        min-height: 550px;
+        /*min-height: 550px;*/
         border: 1px solid #777;
         text-align: center;
     }
-    .desc {
+    .desc, .wikilink {
         font-family: 'Courier New', Courier, monospace;
         font-size: 20px;
+    }
+    .desc {
         display: flex;
         flex-flow: column;
         justify-content: center;
@@ -30,6 +32,11 @@
     .subtitle {
         font-size: 25px;
     }
+    .posts hr {
+        color: #777;
+        width: 100%;
+        margin-bottom: 10px;
+    }
 </style>
 {{#header}}
     <h1>{{.}}</h1>
@@ -37,26 +44,19 @@
 {{#posts}}
 <div class="post">
         <h2>{{name}}</h2>
-        <div class="subtitle">
-            <a href={{{wikilink}}}>Wikilink</a>
-            •
-            <a href="/by/date/{{date}}.html">{{shortdate}}</a> 
-            •
-            <span class="tags">
-                {{#tag}}
-                    <a href="/by/tag/{{.}}.html">#{{.}}</a>
-                {{/tag}}
-            </span>
-        </div>
+        {{#img}}
         <div class="sketch">
-            <a href="{{{img}}}">
-                <img src="{{{img}}}"
-                     width=400
-                     {{^rectangle_img}}height=400{{/rectangle_img}}
-                     {{#rectangle_img}}height=264{{/rectangle_img}}
-                     />
-            </a>
+            <img src="{{{.}}}" width=400 height=400 />
         </div>
+        {{/img}}
+        {{^img}}
+            <hr/>
+        {{/img}}
+        {{#wikilink}}
+        <div class="wikilink">
+            <a href={{{.}}}>Wikipedia Link</a>
+        </div>
+        {{/wikilink}}
         <div class="desc">
             <div>
                 {{#text}}<p>{{.}}</p>{{/text}}
