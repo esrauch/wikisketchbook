@@ -3,8 +3,6 @@
     not_article: true
     date: 9999-01-01
     text_html:
-        - <a href="/all.html">All curious articles</a>
-        - <br/>
         - <a href="/arted.html">Curious articles with art inspired</a>
         - <br/>
         - <a href="/artless.html">Not-yet-arted articles</a>
