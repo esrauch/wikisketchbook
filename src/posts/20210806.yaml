@@ -6,6 +6,4 @@
     text:
         - Zenzi = x^2
         - "Thrice: ((x^2)^2)^2 = x^8"
-    tag:
-        - math
-        - words
+    tag: words

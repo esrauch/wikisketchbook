@@ -1,0 +1,50 @@
+---
+- wikilink: https://wikipedia.org/wiki/Hyphen_War
+  text: A 'war' over a whether there should be a hypthen in a name or not.
+
+- wikilink: https://wikipedia.org/wiki/National_Raisin_Reserve
+  text: An unconstitutional reserve of raisins.
+
+- wikilink: https://wikipedia.org/wiki/Guard_goose
+  text:
+    - Pomeranian is one of the best breeds 
+    - breeds of goose to use as a guard.
+  tag: animals
+
+- wikilink: https://wikipedia.org/wiki/Moon_tree
+  text: The Neil Armstrong of trees.
+  tag: space
+
+- wikilink: https://wikipedia.org/wiki/Love_dart
+  text:
+    - Cupid's arrow IRL
+    - is shot by snails.
+  tag: animals
+
+- wikilink: https://wikipedia.org/wiki/Exploding_animal#Toads
+  name: Exploding Toads
+  text: A thousand toads a'splodin
+  tag: animals
+
+- wikilink: https://wikipedia.org/wiki/Male_pregnancy
+  text:
+    - Males can do it too.
+    - Maybe even humans.
+  tag: animals
+
+- wikilink: https://wikipedia.org/wiki/Giraffe#Necking
+  name: Necking
+  text: Teenage giraffes neck differently than human teens.
+  tag: animals
+
+- wikilink: https://wikipedia.org/wiki/Squirrel_bridge
+  name: A Private Squirrel Bridge
+  text:
+    - A squirrel bridge was built in The Hague.
+    - Only 5 squirrels have used it.
+  tag: animals
+
+- wikilink: https://wikipedia.org/wiki/Carboniferous
+  name: The Good Coal Times
+  text:
+    - Most coal comes from the one period. No bacteria or fungus could decompose trees, so all the dead trees just piled up.

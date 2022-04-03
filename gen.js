@@ -13,11 +13,16 @@ function recursiveLs(dir) {
     })
 }
 
-const allPosts = recursiveLs('src/posts')
+const individualPosts = recursiveLs('src/posts')
     .filter(name => name.endsWith('.yaml'))
-    .map(name => {
-        const contents = fs.readFileSync(name, 'utf8')
-        const parsed = yaml.parse(contents)
+    .map(name => fs.readFileSync(name, 'utf8'))
+    .map(contents => yaml.parse(contents));
+
+const comboFilePosts = yaml.parse(fs.readFileSync('src/posts.yaml', 'utf8'));
+
+const allPosts =
+    [...individualPosts, ...comboFilePosts]
+    .map(parsed => {
         if (parsed.wikilink) {
             if (!parsed.wikilink.startsWith('https://wikipedia.org/wiki/'))
                 throw Error('wrong prefix on wikilink for file ' + name);
@@ -27,8 +32,17 @@ const allPosts = recursiveLs('src/posts')
         if (!parsed.name) {
             parsed.name = parsed.wikilink.substring('https://wikipedia.org/wiki/'.length).replace(/_/g, ' ');
         }
+        if (!parsed.date) {
+            parsed.date = '9997-0-0';
+        }
+        if (typeof parsed.text === 'string') {
+            parsed.text = [parsed.text];
+        }
+        if (!parsed.tag) parsed.tag = 'misc';
         return parsed;
     });
+
+
 allPosts.sort((a, b) => b.date.localeCompare(a.date))
 
 /*
@@ -78,7 +92,7 @@ const artless = articles.filter(post => !post.img);
 writePosts(landing, '.', 'index.html', {hideHeaderLinks: true})
 writePosts(articles, '.', 'all.html', {header: 'Curious Wiki Pages'})
 writePosts(arted, '.', 'arted.html', {header: 'Art inspired by Articles'})
-writePosts(artless, '.', 'artless.html', {header: 'Interesting Not-yet-arted Articles'})
+writePosts(artless, '.', 'artless.html', {header: 'Interesting Not-arted Articles'})
 console.log(`${allPosts.length} posts written to index`)
 
 

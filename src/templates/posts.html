@@ -9,10 +9,10 @@
         display: flex;
         flex-flow: column;
         align-items: center;
-        margin: 25px;
+        margin-top: 25px;
         width: 400px;
-        /*min-height: 550px;*/
-        border: 1px solid #777;
+        border: 1px solid #d8b384;
+        border-radius: 15px;
         text-align: center;
     }
     .desc, .wikilink {
@@ -24,7 +24,7 @@
         flex-flow: column;
         justify-content: center;
         flex-grow: 1;
-        margin: 20px 0;
+        margin: 20px 5px;
     }
     .sketch {
         margin-top: 10px;
@@ -33,7 +33,9 @@
         font-size: 25px;
     }
     .posts hr {
-        color: #777;
+        border: 0;
+        height: 1px;
+        background-color: #d8b384;
         width: 100%;
         margin-bottom: 10px;
     }
@@ -55,6 +57,8 @@
         {{#wikilink}}
         <div class="wikilink">
             <a href={{{.}}}>Wikipedia Link</a>
+            <br>
+            <a href="/by/tag/{{tag}}.html">#{{tag}}</a>
         </div>
         {{/wikilink}}
         <div class="desc">
