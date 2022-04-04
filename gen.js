@@ -1,7 +1,6 @@
 const yaml = require('yaml')
 const fs = require('fs')
 const M = require('mustache')
-const { parse } = require('path')
 
 function recursiveLs(dir) {
     const files = fs.readdirSync(dir).map(f => `${dir}/${f}`)
