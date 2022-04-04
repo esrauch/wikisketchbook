@@ -1,13 +1,13 @@
 ---
 - wikilink: https://wikipedia.org/wiki/Hyphen_War
-  text: A 'war' over a whether there should be a hypthen in a name or not.
+  text: Hyphens can be very contentious.
 
 - wikilink: https://wikipedia.org/wiki/National_Raisin_Reserve
   text: An unconstitutional reserve of raisins.
 
 - wikilink: https://wikipedia.org/wiki/Guard_goose
   text:
-    - Pomeranian is one of the best breeds 
+    - Pomeranian is one of the best 
     - breeds of goose to use as a guard.
   tag: animals
 
@@ -34,7 +34,7 @@
 
 - wikilink: https://wikipedia.org/wiki/Giraffe#Necking
   name: Necking
-  text: Teenage giraffes neck differently than human teens.
+  text: Giraffes fight with their necks.
   tag: animals
 
 - wikilink: https://wikipedia.org/wiki/Squirrel_bridge
