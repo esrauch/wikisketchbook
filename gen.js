@@ -119,8 +119,8 @@ function writePostsGroupByField(posts, fieldName) {
     console.log(`${m.size} by ${fieldName} written`)
 }
 
-writePostsGroupByField(allPosts, 'date')
-writePostsGroupByField(allPosts, 'tag')
+writePostsGroupByField(articles, 'date')
+writePostsGroupByField(articles, 'tag')
 
 const aboutPage = renderWithOuterWrapper(aboutTemplate);
 fs.writeFileSync('docs/about.html', aboutPage);
