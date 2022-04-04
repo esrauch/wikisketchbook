@@ -1,8 +1,0 @@
----
-    name:  Art book in print!
-    not_article: true
-    img: /img/0bookpromo-small.jpg
-    date: 9998-01-01
-    text_html:
-        - A book of 50 interesting things
-        - <a href='https://www.amazon.com/Curious-Interesting-Things-Inspired-Each/dp/B09M552MWF'>Available now for $15</a>

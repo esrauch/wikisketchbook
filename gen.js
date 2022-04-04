@@ -20,7 +20,7 @@ const individualPosts = recursiveLs('src/posts')
 
 const comboFilePosts = yaml.parse(fs.readFileSync('src/posts.yaml', 'utf8'));
 
-const allPosts =
+const articles =
     [...individualPosts, ...comboFilePosts]
     .map(parsed => {
         if (parsed.wikilink) {
@@ -43,19 +43,7 @@ const allPosts =
     });
 
 
-allPosts.sort((a, b) => b.date.localeCompare(a.date))
-
-/*
-const svgTemplate = fs.readFileSync('src/templates/post2.svg', 'utf-8');
-function writePostsSvgs(post) {
-    const image_b64 = fs.readFileSync('src' + post.img).toString('base64');
-    const svg = M.render(svgTemplate, {...post, image_b64});
-    const svg_path = '/svgs/' + post.date + '.svg';
-    post.svg_path = svg_path;
-    fs.writeFileSync('./docs' + svg_path, svg);
-}
-allPosts.forEach(writePostsSvgs);
-*/
+articles.sort((a, b) => b.date.localeCompare(a.date))
 
 const outerTemplate = fs.readFileSync('src/templates/outer.html', 'utf-8');
 const postsTemplate = fs.readFileSync('src/templates/posts.html', 'utf-8');
@@ -80,12 +68,11 @@ function writePosts(posts, outDir, outFilename, opts) {
     fs.mkdirSync(outDir, { recursive: true }, (err) => { if (err) throw err });
 
     // TODO: Split this into multiple once there's too many posts
-    // (mainly for the allposts ordered by date.
+    // for the articles ordered by date.
     fs.writeFileSync(outDir + '/' + outFilename, page);
 }
 
-const landing = allPosts.filter(post => post.not_article)
-const articles = allPosts.filter(post => !post.not_article)
+const landing = yaml.parse(fs.readFileSync('src/promos.yaml', 'utf8'));
 const arted = articles.filter(post => !!post.img);
 const artless = articles.filter(post => !post.img);
 
@@ -93,7 +80,7 @@ writePosts(landing, '.', 'index.html', {hideHeaderLinks: true})
 writePosts(articles, '.', 'all.html', {header: 'Curious Wiki Pages'})
 writePosts(arted, '.', 'arted.html', {header: 'Art inspired by Articles'})
 writePosts(artless, '.', 'artless.html', {header: 'Interesting Not-arted Articles'})
-console.log(`${allPosts.length} posts written to index`)
+console.log(`${articles.length} posts written to index`)
 
 
 function writePostsGroupByField(posts, fieldName) {

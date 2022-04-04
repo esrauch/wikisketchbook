@@ -1,0 +1,12 @@
+---
+- name: Site Links
+  text_html:
+    - <a href="/arted.html">Curious articles with art inspired</a>
+    - <br/>
+    - <a href="/artless.html">Not-arted articles</a>
+
+- name:  Art book in print!
+  img: /img/0bookpromo-small.jpg
+  text_html:
+    - A book of 50 interesting things
+    - <a href='https://www.amazon.com/Curious-Interesting-Things-Inspired-Each/dp/B09M552MWF'>Available now for $15</a>
