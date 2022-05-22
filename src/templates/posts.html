@@ -18,6 +18,7 @@
     .desc, .wikilink {
         font-family: 'Courier New', Courier, monospace;
         font-size: 20px;
+        margin-top: 10px;
     }
     .desc {
         display: flex;
@@ -34,7 +35,6 @@
         height: 1px;
         background-color: #d8b384;
         width: 100%;
-        margin-bottom: 10px;
     }
 </style>
 {{#header}}
@@ -44,9 +44,7 @@
 <div class="post">
         <h2>{{name}}</h2>
         {{#img}}
-        <div class="sketch">
             <img src="{{{.}}}" width=400 height=400 />
-        </div>
         {{/img}}
         {{^img}}
             <hr/>
@@ -55,7 +53,7 @@
         <div class="wikilink">
             <a href={{{.}}}>Wikipedia Link</a>
             <br>
-            <a href="/by/tag/{{tag}}.html">#{{tag}}</a>
+            <!-- <a href="/by/tag/{{tag}}.html">#{{tag}}</a> -->
         </div>
         {{/wikilink}}
         <div class="desc">

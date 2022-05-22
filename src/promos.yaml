@@ -1,12 +1,31 @@
 ---
-- name: Site Links
+- name: This Site
   text_html:
-    - <a href="/arted.html">Curious articles with art inspired</a>
-    - <br/>
-    - <a href="/artless.html">Not-arted articles</a>
+    - Collected hobbies
+    - of Em Rauch.
 
-- name:  Art book in print!
+- name: Artwork
+  img: /img/pig.jpg
+  text_html:
+    - See my public instagram
+    - <a href="https://www.instagram.com/em.rauch.art/">@em.rauch.art</a>
+
+- name: Print-on-demand Book
   img: /img/0bookpromo-small.jpg
   text_html:
-    - A book of 50 interesting things
-    - <a href='https://www.amazon.com/Curious-Interesting-Things-Inspired-Each/dp/B09M552MWF'>Available now for $15</a>
+    - A book of 50 curious things
+    - <a href='https://www.amazon.com/Curious-Interesting-Things-Inspired-Each/dp/B09M552MWF'>Available for $15</a>
+    - Sample content <a href="/book.html">here</a>
+
+- name: Physics Puzzle Game
+  img: /img/aapp.png
+  text_html:
+    - <a href="https://å.app">å.app</a>
+    - A physics-based puzzle game
+    - playable in-browser.
+
+- name: Curious Facts
+  img: /img/squares.png
+  text_html:
+    - Weirdest and most interesting wikipedia articles
+    - <a href="/wiki.html">collected here</a>

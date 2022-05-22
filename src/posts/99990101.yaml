@@ -1,0 +1,7 @@
+---
+  is_book_promo: true
+  name: Print-on-demand Book
+  img: /img/0bookpromo-small.jpg
+  text_html:
+    - A book of 50 curious things
+    - <a href='https://www.amazon.com/Curious-Interesting-Things-Inspired-Each/dp/B09M552MWF'>Available for $15</a>

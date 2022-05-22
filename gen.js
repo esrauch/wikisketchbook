@@ -46,7 +46,6 @@ articles.sort((a, b) => b.date.localeCompare(a.date))
 
 const outerTemplate = fs.readFileSync('src/templates/outer.html', 'utf-8');
 const postsTemplate = fs.readFileSync('src/templates/posts.html', 'utf-8');
-const aboutTemplate = fs.readFileSync('src/templates/about.html', 'utf-8');
 
 function renderWithOuterWrapper(innerTemplate, args) {
     const inner = M.render(innerTemplate, args);
@@ -73,12 +72,14 @@ function writePosts(posts, outDir, outFilename, opts) {
 
 const landing = yaml.parse(fs.readFileSync('src/promos.yaml', 'utf8'));
 const arted = articles.filter(post => !!post.img);
-const artless = articles.filter(post => !post.img);
 
 writePosts(landing, '.', 'index.html', {hideHeaderLinks: true})
-writePosts(articles, '.', 'all.html', {header: 'Curious Wiki Pages'})
-writePosts(arted, '.', 'arted.html', {header: 'Art inspired by Articles'})
-writePosts(artless, '.', 'artless.html', {header: 'Interesting Not-arted Articles'})
+writePosts(arted, '.', 'book.html', {header: 'Curious: Art Book'})
+
+const artless =
+    articles.map(post => { post.img = undefined; return post })
+    .filter(post => !post.is_book_promo);
+writePosts(artless, '.', 'wiki.html', {header: 'Interesting Wiki Pages'})
 console.log(`${articles.length} posts written to index`)
 
 
@@ -107,8 +108,5 @@ function writePostsGroupByField(posts, fieldName) {
 
 writePostsGroupByField(articles, 'date')
 writePostsGroupByField(articles, 'tag')
-
-const aboutPage = renderWithOuterWrapper(aboutTemplate);
-fs.writeFileSync('docs/about.html', aboutPage);
 
 console.log('done!')
