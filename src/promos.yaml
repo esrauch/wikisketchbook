@@ -4,12 +4,6 @@
     - Collected hobbies
     - of Em Rauch.
 
-- name: Artwork
-  img: /img/pig.jpg
-  text_html:
-    - See my public instagram
-    - <a href="https://www.instagram.com/em.rauch.art/">@em.rauch.art</a>
-
 - name: Curious Book
   img: /img/0bookpromo-small.jpg
   text_html:
@@ -24,6 +18,12 @@
     - <a href="https://å.app">å.app</a>
     - A physics-based puzzle game
     - playable in-browser.
+
+- name: Artwork
+  img: /img/pig.jpg
+  text_html:
+    - See my public instagram
+    - <a href="https://www.instagram.com/em.rauch.art/">@em.rauch.art</a>
 
 - name: Curious Facts
   img: /img/squares.png
