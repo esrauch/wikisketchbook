@@ -56,6 +56,7 @@
             opt.value = value;
             pick.add(opt)
         }
+        addOpt(0,0)
 
         function init() {
             document.body.removeEventListener('click', init)
@@ -144,7 +145,7 @@
 
                             visualize();
                         })
-                    .catch(function (err) { console.log('The following gUM error occured: ' + err); })
+                    .catch(function (err) { alert('The following gUM error occured: ' + err); })
             } else {
                 console.log('getUserMedia not supported on your browser!');
             }
