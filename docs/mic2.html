@@ -13,21 +13,7 @@
 
         <form class="controls">
             <div>
-                <label for="voice">Voice setting</label>
-                <select id="voice" name="voice">
-                    <option value="distortion">Distortion</option>
-                    <option value="convolver">Reverb</option>
-                    <option value="biquad">Bass Boost</option>
-                    <option value="off" selected>Off</option>
-                </select>
-            </div>
-            <div>
-                <label for="visual">Visualizer setting</label>
-                <select id="visual" name="visual">
-                    <option value="sinewave">Sinewave</option>
-                    <option value="frequencybars" selected>Frequency bars</option>
-                    <option value="off">Off</option>
-                </select>
+                <select id="input"></select>
             </div>
             <div>
                 <a class="mute">Mute</a>
@@ -63,12 +49,39 @@
         heading.textContent = 'CLICK ANYWHERE TO START'
         document.body.addEventListener('click', init);
 
+        const pick = document.getElementById('input')
+        function addOpt(label, value) {
+            const opt = document.createElement('option')
+            opt.text = label;
+            opt.value = value;
+            pick.add(opt)
+        }
 
         function init() {
+            navigator.mediaDevices.enumerateDevices()
+                    .then((devices) => {
+                        devices
+                            .filter((device) =>
+                                device.kind == 'audioinput')
+                            .forEach((device) => {
+                                const name = `${device.kind}: ${device.label} id = ${device.deviceId}`
+                                alert(name);
+                                addOpt(device.label, device.deviceId);
+                            });
+                    })
+                    .catch((err) => {
+                        console.error(`${err.name}: ${err.message}`);
+                    });
+        }
+
+        pick.onchange = (ev) => {
+                chooseDevice(ev.target.value);
+        };
+
+
+        function start(deviceId) {
             heading.textContent = 'Voice-change-O-matic';
             document.body.removeEventListener('click', init)
-
-
 
             // set up forked web audio context, for multiple browsers
             // window. is needed otherwise Safari explodes
@@ -107,15 +120,17 @@
 
             canvas.setAttribute('width', intendedWidth);
 
-            var visualSelect = document.getElementById("visual");
-
             var drawVisual;
 
             //main block for doing the audio recording
 
             if (navigator.mediaDevices.getUserMedia) {
                 console.log('getUserMedia supported.');
-                var constraints = { audio: true }
+                var constraints = { audio: {
+                        deviceId: {
+                            exact: deviceId
+                        }
+                } }
                 navigator.mediaDevices.getUserMedia(constraints)
                     .then(
                         function (stream) {
@@ -128,7 +143,6 @@
                             analyser.connect(audioCtx.destination);
 
                             visualize();
-                            // voiceChange();
                         })
                     .catch(function (err) { console.log('The following gUM error occured: ' + err); })
             } else {
@@ -167,50 +181,9 @@
                         x += barWidth + 1;
                     }
                 };
-
                 drawAlt();
 
             }
-
-            // function voiceChange() {
-
-            //     distortion.oversample = '4x';
-            //     biquadFilter.gain.setTargetAtTime(0, audioCtx.currentTime, 0)
-
-            //     var voiceSetting = voiceSelect.value;
-            //     console.log(voiceSetting);
-
-            //     //when convolver is selected it is connected back into the audio path
-            //     if (voiceSetting == "convolver") {
-            //         biquadFilter.disconnect(0);
-            //         biquadFilter.connect(convolver);
-            //     } else {
-            //         biquadFilter.disconnect(0);
-            //         biquadFilter.connect(gainNode);
-
-            //         if (voiceSetting == "distortion") {
-            //             distortion.curve = makeDistortionCurve(400);
-            //         } else if (voiceSetting == "biquad") {
-            //             biquadFilter.type = "lowshelf";
-            //             biquadFilter.frequency.setTargetAtTime(1000, audioCtx.currentTime, 0)
-            //             biquadFilter.gain.setTargetAtTime(25, audioCtx.currentTime, 0)
-            //         } else if (voiceSetting == "off") {
-            //             console.log("Voice settings turned off");
-            //         }
-            //     }
-            // }
-
-            // event listeners to change visualize and voice settings
-
-            visualSelect.onchange = function () {
-                window.cancelAnimationFrame(drawVisual);
-                visualize();
-            };
-
-            voiceSelect.onchange = function () {
-                // voiceChange();
-            };
-
             mute.onclick = voiceMute;
 
             function voiceMute() {
