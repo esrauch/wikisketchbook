@@ -2,21 +2,25 @@
 <html>
 
 <body>
-    <select id="input">
-
-    </select>
+    <select id="input"></select>
+    <button onclick="start()">Start</button>
+    <p>
+    <canvas class="visualizer" width="640" height="100"></canvas>
     <script>
         const pick = document.getElementById('input')
-        
-        function m() {
-            // navigator.mediaDevices.getUserMedia({
-            //     audio: true,
-            //     video: false
-            // }).then((stream) => {
-            //     alert(stream)
-            // }).catch((err) => {
-            //     alert(err);
-            // })
+        function addOpt(label, value) {
+            const opt = document.createElement('option')
+            opt.text = label;
+            opt.value = value;
+            pick.add(opt)
+        }
+        addOpt(1, '1v')
+        addOpt(2, '2v')
+
+        var source;
+        var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function start() {
             navigator.mediaDevices.enumerateDevices()
                 .then((devices) => {
                     devices
@@ -25,9 +29,7 @@
                         .forEach((device) => {
                             const name = `${device.kind}: ${device.label} id = ${device.deviceId}`
                             alert(name);
-                            const opt = document.createElement('option')
-                            opt.text = device.deviceId;
-                            pick.add(opt)
+                            addOpt(device.label, device.deviceId);
                         });
                 })
                 .catch((err) => {
@@ -35,12 +37,69 @@
                 });
         }
 
-        pick.onselect = (ev) => {
-           const id = ev.target.value;
-           alert(id);
+        function chooseDevice(deviceId) {
+            navigator.mediaDevices.getUserMedia({
+                audio: {
+                    deviceId: {
+                        exact: deviceId
+                    }
+                }
+            }).then((stream) => {
+                source = audioCtx.createMediaStreamSource(stream);
+                var analyser = audioCtx.createAnalyser();
+                analyser.minDecibels = -90;
+                analyser.maxDecibels = -10;
+                analyser.smoothingTimeConstant = 0.85;
+                source.connect(analyser);
+                visualize();
+            }).catch((err) => {
+                alert(err);
+            })
+        }
+
+        pick.onchange = (ev) => {
+            chooseDevice(ev.target.value);
         };
+
+        var canvas = document.querySelector('.visualizer');
+        var canvasCtx = canvas.getContext("2d");
+
+        function visualize() {
+            WIDTH = canvas.width;
+            HEIGHT = canvas.height;
+            analyser.fftSize = 256;
+            var bufferLengthAlt = analyser.frequencyBinCount;
+            console.log(bufferLengthAlt);
+            var dataArrayAlt = new Uint8Array(bufferLengthAlt);
+
+            canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+
+            var drawAlt = function () {
+                drawVisual = requestAnimationFrame(drawAlt);
+
+                analyser.getByteFrequencyData(dataArrayAlt);
+
+                canvasCtx.fillStyle = 'rgb(0, 0, 0)';
+                canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+
+                var barWidth = (WIDTH / bufferLengthAlt) * 2.5;
+                var barHeight;
+                var x = 0;
+
+                for (var i = 0; i < bufferLengthAlt; i++) {
+                    barHeight = dataArrayAlt[i];
+
+                    canvasCtx.fillStyle = 'rgb(' + (barHeight + 100) + ',50,50)';
+                    canvasCtx.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
+
+                    x += barWidth + 1;
+                }
+            };
+
+            drawAlt();
+        }
+
     </script>
-    <button onclick="m()">click</button>
 </body>
 
 </html>
