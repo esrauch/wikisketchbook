@@ -3,6 +3,7 @@
 
 <body>
     <script>
+        function m() {
         navigator.mediaDevices.getUserMedia({
             audio: true,
             video: false
@@ -11,7 +12,9 @@
         }).catch((err) => {
             alert(err);
         })
+    }
     </script>
+    <button onclick="m()">click</button>
 </body>
 
 </html>
