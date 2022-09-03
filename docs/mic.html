@@ -47,20 +47,20 @@
 
             function chooseDevice(deviceId) {
                 navigator.mediaDevices.getUserMedia({
-                    audio: {
+                    audio: /*{
                         deviceId: {
                             exact: deviceId
                         }
-                    }
+                    }*/ true
                 }).then((stream) => {
                     source = audioCtx.createMediaStreamSource(stream);
 
                     source.connect(distortion);
-             distortion.connect(biquadFilter);
-             biquadFilter.connect(gainNode);
-             convolver.connect(gainNode);
-             gainNode.connect(analyser);
-             analyser.connect(audioCtx.destination);
+                    distortion.connect(biquadFilter);
+                    biquadFilter.connect(gainNode);
+                    convolver.connect(gainNode);
+                    gainNode.connect(analyser);
+                    analyser.connect(audioCtx.destination);
                     visualize();
                 }).catch((err) => {
                     alert(err);
