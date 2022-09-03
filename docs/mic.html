@@ -19,7 +19,15 @@
 
             var source;
             var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
+            var analyser = audioCtx.createAnalyser();
+            analyser.minDecibels = -90;
+            analyser.maxDecibels = -10;
+            analyser.smoothingTimeConstant = 0.85;
+            var distortion = audioCtx.createWaveShaper();
+            var gainNode = audioCtx.createGain();
+            var biquadFilter = audioCtx.createBiquadFilter();
+            var convolver = audioCtx.createConvolver();
+            
             function start() {
                 navigator.mediaDevices.enumerateDevices()
                     .then((devices) => {
@@ -36,14 +44,6 @@
                         console.error(`${err.name}: ${err.message}`);
                     });
             }
-            var analyser = audioCtx.createAnalyser();
-            analyser.minDecibels = -90;
-            analyser.maxDecibels = -10;
-            analyser.smoothingTimeConstant = 0.85;
-            var distortion = audioCtx.createWaveShaper();
-            var gainNode = audioCtx.createGain();
-            var biquadFilter = audioCtx.createBiquadFilter();
-            var convolver = audioCtx.createConvolver();
 
             function chooseDevice(deviceId) {
                 navigator.mediaDevices.getUserMedia({
@@ -62,6 +62,11 @@
                     gainNode.connect(analyser);
                     analyser.connect(audioCtx.destination);
                     visualize();
+                    
+                    distortion.oversample = '4x';
+                    biquadFilter.gain.setTargetAtTime(0, audioCtx.currentTime, 0)
+                    biquadFilter.disconnect(0);
+                    biquadFilter.connect(gainNode);
                 }).catch((err) => {
                     alert(err);
                 })
