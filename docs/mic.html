@@ -6,6 +6,8 @@
 
     </select>
     <script>
+        const pick = document.getElementById('input')
+        
         function m() {
             // navigator.mediaDevices.getUserMedia({
             //     audio: true,
@@ -15,7 +17,6 @@
             // }).catch((err) => {
             //     alert(err);
             // })
-            const pick = document.getElementById('input')
             navigator.mediaDevices.enumerateDevices()
                 .then((devices) => {
                     devices
@@ -25,17 +26,19 @@
                             const name = `${device.kind}: ${device.label} id = ${device.deviceId}`
                             alert(name);
                             const opt = document.createElement('option')
-                            opt.text = name;
+                            opt.text = device.deviceId;
                             pick.add(opt)
-                            opt.onclick = () => {
-                                alert(arguments);
-                            }
                         });
                 })
                 .catch((err) => {
                     console.error(`${err.name}: ${err.message}`);
                 });
         }
+
+        pick.onselect = (ev) => {
+           const id = ev.target.value;
+           alert(id);
+        };
     </script>
     <button onclick="m()">click</button>
 </body>
