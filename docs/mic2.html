@@ -131,7 +131,8 @@
                         deviceId: {
                             exact: deviceId
                         }
-                } }
+                } };
+                alert(constraints.audio.deviceId.exact);
                 navigator.mediaDevices.getUserMedia(constraints)
                     .then(
                         function (stream) {
