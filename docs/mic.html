@@ -2,6 +2,9 @@
 <html>
 
 <body>
+    <select id="input">
+
+    </select>
     <script>
         function m() {
             // navigator.mediaDevices.getUserMedia({
@@ -12,11 +15,22 @@
             // }).catch((err) => {
             //     alert(err);
             // })
+            const pick = document.getElementById('input')
             navigator.mediaDevices.enumerateDevices()
                 .then((devices) => {
-                    devices.forEach((device) => {
-                        alert(`${device.kind}: ${device.label} id = ${device.deviceId}`);
-                    });
+                    devices
+                        .filter((device) =>
+                            device.kind == 'audioinput')
+                        .forEach((device) => {
+                            const name = `${device.kind}: ${device.label} id = ${device.deviceId}`
+                            alert(name);
+                            const opt = document.createElement('option')
+                            opt.text = name;
+                            pick.add(opt)
+                            opt.onclick = () => {
+                                alert(arguments);
+                            }
+                        });
                 })
                 .catch((err) => {
                     console.error(`${err.name}: ${err.message}`);
