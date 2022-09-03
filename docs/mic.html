@@ -37,6 +37,8 @@
                 });
         }
 
+        var analyser;
+
         function chooseDevice(deviceId) {
             navigator.mediaDevices.getUserMedia({
                 audio: {
@@ -46,7 +48,7 @@
                 }
             }).then((stream) => {
                 source = audioCtx.createMediaStreamSource(stream);
-                var analyser = audioCtx.createAnalyser();
+                analyser = audioCtx.createAnalyser();
                 analyser.minDecibels = -90;
                 analyser.maxDecibels = -10;
                 analyser.smoothingTimeConstant = 0.85;
