@@ -58,6 +58,7 @@
         }
 
         function init() {
+            document.body.removeEventListener('click', init)
             navigator.mediaDevices.enumerateDevices()
                     .then((devices) => {
                         devices
@@ -81,7 +82,6 @@
 
         function start(deviceId) {
             heading.textContent = 'Voice-change-O-matic';
-            document.body.removeEventListener('click', init)
 
             // set up forked web audio context, for multiple browsers
             // window. is needed otherwise Safari explodes
