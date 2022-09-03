@@ -4,15 +4,24 @@
 <body>
     <script>
         function m() {
-        navigator.mediaDevices.getUserMedia({
-            audio: true,
-            video: false
-        }).then((stream) => {
-            alert(stream)
-        }).catch((err) => {
-            alert(err);
-        })
-    }
+            // navigator.mediaDevices.getUserMedia({
+            //     audio: true,
+            //     video: false
+            // }).then((stream) => {
+            //     alert(stream)
+            // }).catch((err) => {
+            //     alert(err);
+            // })
+            navigator.mediaDevices.enumerateDevices()
+                .then((devices) => {
+                    devices.forEach((device) => {
+                        alert(`${device.kind}: ${device.label} id = ${device.deviceId}`);
+                    });
+                })
+                .catch((err) => {
+                    console.error(`${err.name}: ${err.message}`);
+                });
+        }
     </script>
     <button onclick="m()">click</button>
 </body>
