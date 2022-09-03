@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script>
+        navigator.mediaDevices.getUserMedia({
+            audio: true,
+            video: false
+        }).then((stream) => {
+            alert(stream)
+        }).catch((err) => {
+            alert(err);
+        })
+    </script>
+</body>
+
+</html>
