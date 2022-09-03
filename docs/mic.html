@@ -5,103 +5,111 @@
     <select id="input"></select>
     <button onclick="start()">Start</button>
     <p>
-    <canvas class="visualizer" width="640" height="100"></canvas>
-    <script>
-        const pick = document.getElementById('input')
-        function addOpt(label, value) {
-            const opt = document.createElement('option')
-            opt.text = label;
-            opt.value = value;
-            pick.add(opt)
-        }
-        addOpt(1, '1v')
-        addOpt(2, '2v')
+        <canvas class="visualizer" width="640" height="100"></canvas>
+        <script>
+            const pick = document.getElementById('input')
+            function addOpt(label, value) {
+                const opt = document.createElement('option')
+                opt.text = label;
+                opt.value = value;
+                pick.add(opt)
+            }
+            addOpt(1, '1v')
+            addOpt(2, '2v')
 
-        var source;
-        var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            var source;
+            var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-        function start() {
-            navigator.mediaDevices.enumerateDevices()
-                .then((devices) => {
-                    devices
-                        .filter((device) =>
-                            device.kind == 'audioinput')
-                        .forEach((device) => {
-                            const name = `${device.kind}: ${device.label} id = ${device.deviceId}`
-                            alert(name);
-                            addOpt(device.label, device.deviceId);
-                        });
-                })
-                .catch((err) => {
-                    console.error(`${err.name}: ${err.message}`);
-                });
-        }
+            function start() {
+                navigator.mediaDevices.enumerateDevices()
+                    .then((devices) => {
+                        devices
+                            .filter((device) =>
+                                device.kind == 'audioinput')
+                            .forEach((device) => {
+                                const name = `${device.kind}: ${device.label} id = ${device.deviceId}`
+                                alert(name);
+                                addOpt(device.label, device.deviceId);
+                            });
+                    })
+                    .catch((err) => {
+                        console.error(`${err.name}: ${err.message}`);
+                    });
+            }
+            var analyser = audioCtx.createAnalyser();
+            analyser.minDecibels = -90;
+            analyser.maxDecibels = -10;
+            analyser.smoothingTimeConstant = 0.85;
+            var distortion = audioCtx.createWaveShaper();
+            var gainNode = audioCtx.createGain();
+            var biquadFilter = audioCtx.createBiquadFilter();
+            var convolver = audioCtx.createConvolver();
 
-        var analyser;
-
-        function chooseDevice(deviceId) {
-            navigator.mediaDevices.getUserMedia({
-                audio: {
-                    deviceId: {
-                        exact: deviceId
+            function chooseDevice(deviceId) {
+                navigator.mediaDevices.getUserMedia({
+                    audio: {
+                        deviceId: {
+                            exact: deviceId
+                        }
                     }
-                }
-            }).then((stream) => {
-                source = audioCtx.createMediaStreamSource(stream);
-                analyser = audioCtx.createAnalyser();
-                analyser.minDecibels = -90;
-                analyser.maxDecibels = -10;
-                analyser.smoothingTimeConstant = 0.85;
-                source.connect(analyser);
-                visualize();
-            }).catch((err) => {
-                alert(err);
-            })
-        }
+                }).then((stream) => {
+                    source = audioCtx.createMediaStreamSource(stream);
 
-        pick.onchange = (ev) => {
-            chooseDevice(ev.target.value);
-        };
+                    source.connect(distortion);
+             distortion.connect(biquadFilter);
+             biquadFilter.connect(gainNode);
+             convolver.connect(gainNode);
+             gainNode.connect(analyser);
+             analyser.connect(audioCtx.destination);
+                    visualize();
+                }).catch((err) => {
+                    alert(err);
+                })
+            }
 
-        var canvas = document.querySelector('.visualizer');
-        var canvasCtx = canvas.getContext("2d");
-
-        function visualize() {
-            WIDTH = canvas.width;
-            HEIGHT = canvas.height;
-            analyser.fftSize = 256;
-            var bufferLengthAlt = analyser.frequencyBinCount;
-            console.log(bufferLengthAlt);
-            var dataArrayAlt = new Uint8Array(bufferLengthAlt);
-
-            canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
-
-            var drawAlt = function () {
-                drawVisual = requestAnimationFrame(drawAlt);
-
-                analyser.getByteFrequencyData(dataArrayAlt);
-
-                canvasCtx.fillStyle = 'rgb(0, 0, 0)';
-                canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
-
-                var barWidth = (WIDTH / bufferLengthAlt) * 2.5;
-                var barHeight;
-                var x = 0;
-
-                for (var i = 0; i < bufferLengthAlt; i++) {
-                    barHeight = dataArrayAlt[i];
-
-                    canvasCtx.fillStyle = 'rgb(' + (barHeight + 100) + ',50,50)';
-                    canvasCtx.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
-
-                    x += barWidth + 1;
-                }
+            pick.onchange = (ev) => {
+                chooseDevice(ev.target.value);
             };
 
-            drawAlt();
-        }
+            var canvas = document.querySelector('.visualizer');
+            var canvasCtx = canvas.getContext("2d");
 
-    </script>
+            function visualize() {
+                WIDTH = canvas.width;
+                HEIGHT = canvas.height;
+                analyser.fftSize = 256;
+                var bufferLengthAlt = analyser.frequencyBinCount;
+                console.log(bufferLengthAlt);
+                var dataArrayAlt = new Uint8Array(bufferLengthAlt);
+
+                canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+
+                var drawAlt = function () {
+                    drawVisual = requestAnimationFrame(drawAlt);
+
+                    analyser.getByteFrequencyData(dataArrayAlt);
+
+                    canvasCtx.fillStyle = 'rgb(0, 0, 0)';
+                    canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+
+                    var barWidth = (WIDTH / bufferLengthAlt) * 2.5;
+                    var barHeight;
+                    var x = 0;
+
+                    for (var i = 0; i < bufferLengthAlt; i++) {
+                        barHeight = dataArrayAlt[i];
+
+                        canvasCtx.fillStyle = 'rgb(' + (barHeight + 100) + ',50,50)';
+                        canvasCtx.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
+
+                        x += barWidth + 1;
+                    }
+                };
+
+                drawAlt();
+            }
+
+        </script>
 </body>
 
 </html>
