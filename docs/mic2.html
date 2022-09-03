@@ -128,7 +128,7 @@
                             analyser.connect(audioCtx.destination);
 
                             visualize();
-                            voiceChange();
+                            // voiceChange();
                         })
                     .catch(function (err) { console.log('The following gUM error occured: ' + err); })
             } else {
@@ -172,33 +172,33 @@
 
             }
 
-            function voiceChange() {
+            // function voiceChange() {
 
-                distortion.oversample = '4x';
-                biquadFilter.gain.setTargetAtTime(0, audioCtx.currentTime, 0)
+            //     distortion.oversample = '4x';
+            //     biquadFilter.gain.setTargetAtTime(0, audioCtx.currentTime, 0)
 
-                var voiceSetting = voiceSelect.value;
-                console.log(voiceSetting);
+            //     var voiceSetting = voiceSelect.value;
+            //     console.log(voiceSetting);
 
-                //when convolver is selected it is connected back into the audio path
-                if (voiceSetting == "convolver") {
-                    biquadFilter.disconnect(0);
-                    biquadFilter.connect(convolver);
-                } else {
-                    biquadFilter.disconnect(0);
-                    biquadFilter.connect(gainNode);
+            //     //when convolver is selected it is connected back into the audio path
+            //     if (voiceSetting == "convolver") {
+            //         biquadFilter.disconnect(0);
+            //         biquadFilter.connect(convolver);
+            //     } else {
+            //         biquadFilter.disconnect(0);
+            //         biquadFilter.connect(gainNode);
 
-                    if (voiceSetting == "distortion") {
-                        distortion.curve = makeDistortionCurve(400);
-                    } else if (voiceSetting == "biquad") {
-                        biquadFilter.type = "lowshelf";
-                        biquadFilter.frequency.setTargetAtTime(1000, audioCtx.currentTime, 0)
-                        biquadFilter.gain.setTargetAtTime(25, audioCtx.currentTime, 0)
-                    } else if (voiceSetting == "off") {
-                        console.log("Voice settings turned off");
-                    }
-                }
-            }
+            //         if (voiceSetting == "distortion") {
+            //             distortion.curve = makeDistortionCurve(400);
+            //         } else if (voiceSetting == "biquad") {
+            //             biquadFilter.type = "lowshelf";
+            //             biquadFilter.frequency.setTargetAtTime(1000, audioCtx.currentTime, 0)
+            //             biquadFilter.gain.setTargetAtTime(25, audioCtx.currentTime, 0)
+            //         } else if (voiceSetting == "off") {
+            //             console.log("Voice settings turned off");
+            //         }
+            //     }
+            // }
 
             // event listeners to change visualize and voice settings
 
@@ -208,7 +208,7 @@
             };
 
             voiceSelect.onchange = function () {
-                voiceChange();
+                // voiceChange();
             };
 
             mute.onclick = voiceMute;
