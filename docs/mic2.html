@@ -94,48 +94,9 @@
             var biquadFilter = audioCtx.createBiquadFilter();
             var convolver = audioCtx.createConvolver();
 
-            // distortion curve for the waveshaper, thanks to Kevin Ennis
-            // http://stackoverflow.com/questions/22312841/waveshaper-node-in-webaudio-how-to-emulate-distortion
-
-            //   function makeDistortionCurve(amount) {
-            //     var k = typeof amount === 'number' ? amount : 50,
-            //       n_samples = 44100,
-            //       curve = new Float32Array(n_samples),
-            //       deg = Math.PI / 180,
-            //       i = 0,
-            //       x;
-            //     for ( ; i < n_samples; ++i ) {
-            //       x = i * 2 / n_samples - 1;
-            //       curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
-            //     }
-            //     return curve;
-            //   };
-
             // grab audio track via XHR for convolver node
 
             var soundSource;
-
-            ajaxRequest = new XMLHttpRequest();
-
-            ajaxRequest.open('GET', 'https://mdn.github.io/voice-change-o-matic/audio/concert-crowd.ogg', true);
-
-            ajaxRequest.responseType = 'arraybuffer';
-
-
-            ajaxRequest.onload = function () {
-                var audioData = ajaxRequest.response;
-
-                audioCtx.decodeAudioData(audioData, function (buffer) {
-                    soundSource = audioCtx.createBufferSource();
-                    convolver.buffer = buffer;
-                }, function (e) { console.log("Error with decoding audio data" + e.err); });
-
-                //soundSource.connect(audioCtx.destination);
-                //soundSource.loop = true;
-                //soundSource.start();
-            };
-
-            ajaxRequest.send();
 
             // set up canvas context for visualizer
 
@@ -178,92 +139,36 @@
                 WIDTH = canvas.width;
                 HEIGHT = canvas.height;
 
+                analyser.fftSize = 256;
+                var bufferLengthAlt = analyser.frequencyBinCount;
+                console.log(bufferLengthAlt);
+                var dataArrayAlt = new Uint8Array(bufferLengthAlt);
 
-                var visualSetting = visualSelect.value;
-                console.log(visualSetting);
+                canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
 
-                if (visualSetting === "sinewave") {
-                    analyser.fftSize = 2048;
-                    var bufferLength = analyser.fftSize;
-                    console.log(bufferLength);
-                    var dataArray = new Uint8Array(bufferLength);
+                var drawAlt = function () {
+                    drawVisual = requestAnimationFrame(drawAlt);
 
-                    canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+                    analyser.getByteFrequencyData(dataArrayAlt);
 
-                    var draw = function () {
-
-                        drawVisual = requestAnimationFrame(draw);
-
-                        analyser.getByteTimeDomainData(dataArray);
-
-                        canvasCtx.fillStyle = 'rgb(200, 200, 200)';
-                        canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
-
-                        canvasCtx.lineWidth = 2;
-                        canvasCtx.strokeStyle = 'rgb(0, 0, 0)';
-
-                        canvasCtx.beginPath();
-
-                        var sliceWidth = WIDTH * 1.0 / bufferLength;
-                        var x = 0;
-
-                        for (var i = 0; i < bufferLength; i++) {
-
-                            var v = dataArray[i] / 128.0;
-                            var y = v * HEIGHT / 2;
-
-                            if (i === 0) {
-                                canvasCtx.moveTo(x, y);
-                            } else {
-                                canvasCtx.lineTo(x, y);
-                            }
-
-                            x += sliceWidth;
-                        }
-
-                        canvasCtx.lineTo(canvas.width, canvas.height / 2);
-                        canvasCtx.stroke();
-                    };
-
-                    draw();
-
-                } else if (visualSetting == "frequencybars") {
-                    analyser.fftSize = 256;
-                    var bufferLengthAlt = analyser.frequencyBinCount;
-                    console.log(bufferLengthAlt);
-                    var dataArrayAlt = new Uint8Array(bufferLengthAlt);
-
-                    canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
-
-                    var drawAlt = function () {
-                        drawVisual = requestAnimationFrame(drawAlt);
-
-                        analyser.getByteFrequencyData(dataArrayAlt);
-
-                        canvasCtx.fillStyle = 'rgb(0, 0, 0)';
-                        canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
-
-                        var barWidth = (WIDTH / bufferLengthAlt) * 2.5;
-                        var barHeight;
-                        var x = 0;
-
-                        for (var i = 0; i < bufferLengthAlt; i++) {
-                            barHeight = dataArrayAlt[i];
-
-                            canvasCtx.fillStyle = 'rgb(' + (barHeight + 100) + ',50,50)';
-                            canvasCtx.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
-
-                            x += barWidth + 1;
-                        }
-                    };
-
-                    drawAlt();
-
-                } else if (visualSetting == "off") {
-                    canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
-                    canvasCtx.fillStyle = "red";
+                    canvasCtx.fillStyle = 'rgb(0, 0, 0)';
                     canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
-                }
+
+                    var barWidth = (WIDTH / bufferLengthAlt) * 2.5;
+                    var barHeight;
+                    var x = 0;
+
+                    for (var i = 0; i < bufferLengthAlt; i++) {
+                        barHeight = dataArrayAlt[i];
+
+                        canvasCtx.fillStyle = 'rgb(' + (barHeight + 100) + ',50,50)';
+                        canvasCtx.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
+
+                        x += barWidth + 1;
+                    }
+                };
+
+                drawAlt();
 
             }
 
