@@ -4,14 +4,6 @@
     - Collected hobbies
     - of Em Rauch.
 
-- name: Curious Book
-  img: /img/0bookpromo-small.jpg
-  text_html:
-    - A book of 50 curious things
-    - and art inspired by each.
-    - <a href='https://www.amazon.com/Curious-Interesting-Things-Inspired-Each/dp/B09M552MWF'>Available for $15</a>
-    - Sample content <a href="/book.html">here</a>
-
 - name: Physics Puzzle Game
   img: /img/aapp.png
   text_html:
